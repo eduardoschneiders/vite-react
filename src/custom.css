@@ -1,0 +1,16 @@
+/* Sobrescrevendo a cor do botão padrão do Polaris */
+.Polaris-Button {
+  background-color: #0070f3 !important;
+  color: #fff !important;
+}
+
+/* Ajustando o título da página */
+.Polaris-Page__Title {
+  font-size: 2rem !important;
+  color: #ff6600 !important;
+}
+
+button {
+  background-color: #ff6600 !important;
+  color: #fff !important;
+}
