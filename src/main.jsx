@@ -47,8 +47,20 @@ let tags = [
   { id: 10, name: "Peripherals", status: "enabled", url: '/', }
 ]
 let productsToAdd = [
-  { id: 1, imageUrl: 'https://cataas.com/cat?width=101', url: '/', name: "Laptop Pro 15", numberAvailable: 10, price: '$12.95' },
-  { id: 2, imageUrl: 'https://cataas.com/cat?width=102', url: '/', name: "Wireless Mouse", numberAvailable: 12, price: '$10.05' },
+  {
+    id: 1, imageUrl: 'https://cataas.com/cat?width=101', url: '/', name: "Laptop Pro 15", numberAvailable: 10, price: '$12.95',
+    variants: [
+      { id: 321, name: "Laptop Pro 15 variant 1", numberAvailable: 10, price: '$12.95' },
+      { id: 216, name: "Laptop Pro 15 variant 2", numberAvailable: 12, price: '$10.05' },
+    ]
+  },
+  {
+    id: 2, imageUrl: 'https://cataas.com/cat?width=102', url: '/', name: "Wireless Mouse", numberAvailable: 12, price: '$10.05',
+    variants: [
+      { id: 582, name: "Wireless Mouse variant 1", numberAvailable: 10, price: '$12.95' },
+      { id: 577, name: "Wireless Mouse variant 2", numberAvailable: 12, price: '$10.05' },
+    ]
+  },
 ]
 
 createRoot(document.getElementById('root')).render(

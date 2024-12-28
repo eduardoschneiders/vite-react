@@ -1,11 +1,11 @@
 import { Modal } from '@shopify/polaris';
 
-export default function MainModal({ onClose, primaryAction, secondaryActions, children }) {
+export default function MainModal({ title, onClose, primaryAction, secondaryActions, children }) {
   return (
     <Modal
       open={true}
       onClose={onClose}
-      title="Export customers"
+      title={title}
       primaryAction={primaryAction}
       secondaryActions={secondaryActions}
     >
