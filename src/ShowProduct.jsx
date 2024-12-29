@@ -1,8 +1,8 @@
-import { Page, Badge, Checkbox, Image, LegacyCard, Layout, Bleed, Box, InlineStack, BlockStack, Divider, Text, Card, Button, Banner } from '@shopify/polaris';
+import { Page, Badge, Checkbox, Image, IndexTable, LegacyCard, Layout, Bleed, Box, InlineStack, BlockStack, Divider, Text, Card, Button, Banner } from '@shopify/polaris';
 import React from 'react';
 
 
-export default function ShowProduct({ imageUrl, productName }) {
+export default function ShowProduct({ imageUrl, productName, inventoryData }) {
   const Placeholder = ({
     label = '',
     height = 'auto',
@@ -136,24 +136,52 @@ export default function ShowProduct({ imageUrl, productName }) {
                 <BlockStack inlineAlign="start">
                   <InlineStack gap="400">
                     <Text as="h3" variant="headingSm">
-                      Status
+                      Product Inventory
                     </Text>
                   </InlineStack>
                 </BlockStack>
                 <BlockStack>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                    <p>
-                      Preorder status is <strong>disabled</strong>
-                    </p>
 
-                    <Button variant="primary" tone="success">Enable</Button>
-                  </div>
+                  <p style={{ textAlign: 'left', marginTop: '16px' }}>
+                    If the product inventory/details are incorrect, click <strong>"Sync Products"</strong> below.
+                  </p>
 
-                  <Banner status="info">
-                    <p style={{ textAlign: 'left' }}>
-                      This product is currently not available for preorder. To enable preorder, click the button on the right.
-                    </p>
-                  </Banner>
+                  <p style={{ textAlign: 'left', marginTop: '16px', marginBottom: '16px' }}>
+                    <Button>Sync Products</Button>
+                  </p>
+
+                  <Card padding={0}>
+                    <IndexTable
+                      resourceName={{ singular: 'product', plural: 'products' }}
+                      itemCount={2}
+                      selectedItemsCount={'All'}
+                      headings={[
+                        { title: 'Product Location' },
+                        { title: 'Inventory Tracking' },
+                        { title: 'Inventory Quantity' },
+                        { title: 'Oversell Status' },
+                      ]}
+                      selectable={false}
+                    >
+                      <IndexTable.Row id={1} key={1} position={1}>
+                        <IndexTable.Cell>
+                          Pre-order Now App
+                        </IndexTable.Cell>
+                        <IndexTable.Cell><Badge tone="success">Enabled</Badge></IndexTable.Cell>
+                        <IndexTable.Cell>50</IndexTable.Cell>
+                        <IndexTable.Cell><Badge tone="success">Enabled</Badge></IndexTable.Cell>
+                      </IndexTable.Row>
+
+                      <IndexTable.Row id={2} key={2} position={2}>
+                        <IndexTable.Cell>
+                          Shopify
+                        </IndexTable.Cell>
+                        <IndexTable.Cell><Badge tone="success">Enabled</Badge></IndexTable.Cell>
+                        <IndexTable.Cell>50</IndexTable.Cell>
+                        <IndexTable.Cell><Badge tone="success">Enabled</Badge></IndexTable.Cell>
+                      </IndexTable.Row>
+                    </IndexTable>
+                  </Card>
                 </BlockStack>
               </BlockStack>
             </Card>
