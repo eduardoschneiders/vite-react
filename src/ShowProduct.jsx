@@ -1,4 +1,4 @@
-import { Page, Badge, LegacyCard, Layout, InlineStack, BlockStack, Divider, Text, Card, Button, Banner } from '@shopify/polaris';
+import { Page, Badge, Checkbox, Image, LegacyCard, Layout, Bleed, Box, InlineStack, BlockStack, Divider, Text, Card, Button, Banner } from '@shopify/polaris';
 import React from 'react';
 
 
@@ -60,51 +60,104 @@ export default function ShowProduct({ imageUrl, productName }) {
     >
       <Layout>
         <Layout.Section variant="oneThird">
-          <LegacyCard sectioned>
-            <BlockStack gap="800">
-              <InlineStack gap="400" blockAlign="center">
-                <div style={{ width: '47px', height: '47px', padding: '5px', background: '#f9f9f7', border: 'solid 1px #e5e5e4', borderRadius: '8px' }}>
-                  <img src={imageUrl} width={35} height={35} />
-                </div>
+          <Layout.Section>
+            <LegacyCard sectioned>
+              <BlockStack>
+                <InlineStack gap="400" blockAlign="center">
+                  <div style={{ width: '47px', height: '47px', padding: '5px', background: '#f9f9f7', border: 'solid 1px #e5e5e4', borderRadius: '8px' }}>
+                    <img src={imageUrl} width={35} height={35} />
+                  </div>
 
-                <Text
-                  as="h2"
-                  variant="bodyMd"
-                  fontWeight="medium"
-                >
-                  {productName}
-                </Text>
-              </InlineStack>
-            </BlockStack>
-          </LegacyCard>
-        </Layout.Section>
-        <Layout.Section>
-          <Card gap="400">
-            <BlockStack gap="200">
-              <BlockStack inlineAlign="start">
-                <InlineStack gap="400">
-                  <Text as="h3" variant="headingSm">
-                    Status
+                  <Text
+                    as="h2"
+                    variant="bodyMd"
+                    fontWeight="medium"
+                  >
+                    {productName}
                   </Text>
                 </InlineStack>
               </BlockStack>
-              <BlockStack>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                  <p>
-                    Preorder status is <strong>disabled</strong>
-                  </p>
+            </LegacyCard>
+          </Layout.Section>
+        </Layout.Section>
+        <Layout.Section>
+          <Layout.Section>
+            <Card gap="400">
+              <BlockStack gap="200">
+                <BlockStack inlineAlign="start">
+                  <InlineStack gap="400">
+                    <Text as="h3" variant="headingSm">
+                      Status
+                    </Text>
+                  </InlineStack>
+                </BlockStack>
+                <BlockStack>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                    <p>
+                      Preorder status is <strong>disabled</strong>
+                    </p>
 
-                  <Button variant="primary" tone="success">Enable</Button>
-                </div>
+                    <Button variant="primary" tone="success">Enable</Button>
+                  </div>
 
-                <Banner status="info">
-                  <p style={{ textAlign: 'left' }}>
-                    This product is currently not available for preorder. To enable preorder, click the button on the right.
-                  </p>
-                </Banner>
+                  <Banner status="info">
+                    <p style={{ textAlign: 'left' }}>
+                      This product is currently not available for preorder. To enable preorder, click the button on the right.
+                    </p>
+                  </Banner>
+                </BlockStack>
               </BlockStack>
-            </BlockStack>
-          </Card>
+            </Card>
+          </Layout.Section>
+
+          <Layout.Section>
+            <Card roundedAbove="sm">
+              <Bleed marginInline="400" marginBlock="400">
+                <Banner tone="info">
+                  <strong>Product Settings</strong>
+                </Banner>
+
+                <Box padding="400">
+                  <p style={{ textAlign: 'left' }}>
+                    Default settings are automatically enabled. To choose custom settings (such as Button Text and Badge details), please check the box below.
+                  </p>
+
+                  <p style={{ textAlign: 'left', marginTop: '16px' }}>
+                    <Checkbox label="Enable Custom Settings" />
+                  </p>
+                </Box>
+              </Bleed>
+            </Card>
+          </Layout.Section>
+
+          <Layout.Section>
+            <Card gap="200">
+              <BlockStack gap="200">
+                <BlockStack inlineAlign="start">
+                  <InlineStack gap="400">
+                    <Text as="h3" variant="headingSm">
+                      Status
+                    </Text>
+                  </InlineStack>
+                </BlockStack>
+                <BlockStack>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                    <p>
+                      Preorder status is <strong>disabled</strong>
+                    </p>
+
+                    <Button variant="primary" tone="success">Enable</Button>
+                  </div>
+
+                  <Banner status="info">
+                    <p style={{ textAlign: 'left' }}>
+                      This product is currently not available for preorder. To enable preorder, click the button on the right.
+                    </p>
+                  </Banner>
+                </BlockStack>
+              </BlockStack>
+            </Card>
+          </Layout.Section>
         </Layout.Section>
       </Layout>
     </Page >
