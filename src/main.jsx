@@ -11,6 +11,9 @@ import { AppProvider } from '@shopify/polaris';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NewComponent from './NewComponent'; // Importe seu novo componente
 import Products from './Products'; // Importe seu novo componente
+import ShowProduct from './ShowProduct'; // Importe seu novo componente
+import ProductPreorderPage from './ProductPreorderPage'; // Importe seu novo componente
+
 
 // let products = [
 //   { name: 'T-shirt', price: 20 },
@@ -71,6 +74,9 @@ createRoot(document.getElementById('root')).render(
           <Route path="/" element={<App />} />
           <Route path="/new" element={<NewComponent foo="FOOOO" products={products} />} />
           <Route path="/products" element={<Products products={products} tags={tags} productsToAdd={productsToAdd} />} />
+          <Route path="/product" element={<ShowProduct productName="Laptop Pro 15" imageUrl="https://cataas.com/cat?width=102" />} />
+          <Route path="/test" element={<ProductPreorderPage />} />
+
         </Routes>
       </Router>
     </AppProvider>
