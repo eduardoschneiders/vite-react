@@ -154,7 +154,6 @@ export default function ShowProduct({ imageUrl, productName, inventoryData }) {
                     <IndexTable
                       resourceName={{ singular: 'product', plural: 'products' }}
                       itemCount={2}
-                      selectedItemsCount={'All'}
                       headings={[
                         { title: 'Product Location' },
                         { title: 'Inventory Tracking' },
@@ -165,7 +164,9 @@ export default function ShowProduct({ imageUrl, productName, inventoryData }) {
                     >
                       <IndexTable.Row id={1} key={1} position={1}>
                         <IndexTable.Cell>
-                          Pre-order Now App
+                          <p style={{ paddingTop: '8px', paddingBottom: '8px' }}>
+                            Pre-order Now App
+                          </p>
                         </IndexTable.Cell>
                         <IndexTable.Cell><Badge tone="success">Enabled</Badge></IndexTable.Cell>
                         <IndexTable.Cell>50</IndexTable.Cell>
@@ -174,7 +175,9 @@ export default function ShowProduct({ imageUrl, productName, inventoryData }) {
 
                       <IndexTable.Row id={2} key={2} position={2}>
                         <IndexTable.Cell>
-                          Shopify
+                          <p style={{ paddingTop: '8px', paddingBottom: '8px' }}>
+                            Shopify
+                          </p>
                         </IndexTable.Cell>
                         <IndexTable.Cell><Badge tone="success">Enabled</Badge></IndexTable.Cell>
                         <IndexTable.Cell>50</IndexTable.Cell>
