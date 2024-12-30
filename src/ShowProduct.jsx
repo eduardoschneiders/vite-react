@@ -18,10 +18,10 @@ import {
   TextField,
   Popover,
   Icon,
-  PageActions,
+  Link
 } from '@shopify/polaris';
 import { React, useState, useEffect, useRef } from 'react';
-import { SearchIcon, CalendarIcon, DeleteIcon } from '@shopify/polaris-icons';
+import { SearchIcon, CalendarIcon, InfoIcon } from '@shopify/polaris-icons';
 import "./TextFieldWithPostfix.css";
 
 
@@ -178,6 +178,7 @@ export default function ShowProduct({ imageUrl, productName, inventoryData }) {
             </LegacyCard>
           </Layout.Section>
         </Layout.Section>
+
         <Layout.Section>
           <Layout.Section>
             <Card gap="400">
@@ -341,6 +342,58 @@ export default function ShowProduct({ imageUrl, productName, inventoryData }) {
               </div>
             </div>
           </Layout.Section>
+        </Layout.Section>
+
+        <Layout.Section>
+          <div
+            style={{
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+            <div
+              style={{
+                marginBottom: '1rem',
+                width: '100%',
+                maxWidth: '330px',
+                marginTop: '30px'
+              }}>
+              <div className='visit-support-center'>
+                <Card roundedAbove="sm">
+                  <InlineStack wrap={true} gap="200">
+                    <div
+                      style={{
+                        width: '100%',
+                        display: 'flex',
+                        gap: '10px'
+                      }}>
+                      <Button
+                        size="medium"
+                        onClick={() => { }}
+                        accessibilityLabel="Visit support center"
+                        variant="plain"
+                        icon={InfoIcon}
+                      />
+                      <div
+                        style={{
+                          height: '100%',
+                          width: 'auto',
+                          paddingTop: '5px'
+                        }}>
+                        <Text as="p" variant="bodyMd">
+                          Need our help? Visit our                         <Link monochrome url="https://help.shopify.com/manual">
+                            support center.
+                          </Link>
+                        </Text>
+
+                      </div>
+                    </div>
+                  </InlineStack>
+                </Card>
+              </div>
+            </div>
+          </div>
         </Layout.Section>
       </Layout>
     </Page >

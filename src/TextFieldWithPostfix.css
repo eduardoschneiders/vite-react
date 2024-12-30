@@ -1,6 +1,7 @@
 body {
   height: auto !important;
 }
+
 .textFieldWrapper {
   position: relative;
 }
@@ -15,4 +16,18 @@ body {
   right: 10px;
   pointer-events: none;
   z-index: 100;
+}
+.visit-support-center .Polaris-Box {
+  padding: 12px;
+}
+
+.visit-support-center .Polaris-Button--iconOnly {
+  background-color: #91D0FF;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+}
+
+.visit-support-center .Polaris-Button.Polaris-Button svg {
+  fill: #002133;
 }
