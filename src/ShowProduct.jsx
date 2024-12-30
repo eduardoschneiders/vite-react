@@ -18,9 +18,10 @@ import {
   TextField,
   Popover,
   Icon,
+  PageActions,
 } from '@shopify/polaris';
 import { React, useState, useEffect, useRef } from 'react';
-import { SearchIcon, CalendarIcon } from '@shopify/polaris-icons';
+import { SearchIcon, CalendarIcon, DeleteIcon } from '@shopify/polaris-icons';
 import "./TextFieldWithPostfix.css";
 
 
@@ -311,7 +312,6 @@ export default function ShowProduct({ imageUrl, productName, inventoryData }) {
                     </p>
                   </InlineStack>
 
-
                   <div style={{ marginTop: '20px' }}>
                     <Banner tone="warning" status="info" style={{ marginTop: '20px' }}>
                       <p style={{ textAlign: 'left' }}>
@@ -322,6 +322,24 @@ export default function ShowProduct({ imageUrl, productName, inventoryData }) {
                 </BlockStack>
               </BlockStack>
             </Card>
+          </Layout.Section>
+          <Layout.Section>
+            <div
+              style={{
+                marginTop: "20px",
+                marginBottom: "20px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <Button variant="primary" tone="critical" destructive>Delete Product</Button>
+
+              <div style={{ display: "flex", gap: "8px" }}>
+                <Button>Save for all Products</Button>
+                <Button variant="primary">Save</Button>
+              </div>
+            </div>
           </Layout.Section>
         </Layout.Section>
       </Layout>
