@@ -182,7 +182,7 @@ export default function ShowProduct({ imageUrl, productName }) {
                   </Card>
                 </div>
 
-                <div class="main-content">
+                <div className="main-content">
                   <Layout.Section>
                     <Card gap="400">
                       <BlockStack gap="200">

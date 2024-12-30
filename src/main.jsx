@@ -65,11 +65,6 @@ let productsToAdd = [
   },
 ]
 
-let inventoryData = [
-  ["Pre-order Now App", "Enabled", "50", "Enabled"],
-  ["Shopify", "Enabled", "50", "Enabled"],
-];
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AppProvider>
@@ -78,7 +73,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/" element={<App />} />
           <Route path="/new" element={<NewComponent foo="FOOOO" products={products} />} />
           <Route path="/products" element={<Products products={products} tags={tags} productsToAdd={productsToAdd} />} />
-          <Route path="/product" element={<ShowProduct productName="Laptop Pro 15" imageUrl="https://cataas.com/cat?width=102" inventoryData={inventoryData} />} />
+          <Route path="/product" element={<ShowProduct productName="Laptop Pro 15" imageUrl="https://cataas.com/cat?width=102" />} />
 
         </Routes>
       </Router>
