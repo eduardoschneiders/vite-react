@@ -1,0 +1,15 @@
+.textFieldWrapper {
+  position: relative;
+}
+
+.textFieldWrapper .Polaris-TextField {
+  padding-right: 40px;
+}
+
+.icon {
+  position: absolute;
+  top: 55%;
+  right: 10px;
+  pointer-events: none;
+  z-index: 100;
+}

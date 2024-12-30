@@ -1,5 +1,27 @@
-import { Page, Badge, Checkbox, Image, IndexTable, LegacyCard, Layout, Bleed, Box, InlineStack, BlockStack, Divider, Text, Card, Button, Banner } from '@shopify/polaris';
-import React from 'react';
+import {
+  Page,
+  Badge,
+  Checkbox,
+  Image,
+  IndexTable,
+  LegacyCard,
+  Layout,
+  Bleed,
+  Box,
+  InlineStack,
+  BlockStack,
+  Text,
+  Card,
+  Button,
+  Banner,
+  DatePicker,
+  TextField,
+  Popover,
+  Icon,
+} from '@shopify/polaris';
+import { React, useState, useEffect, useRef } from 'react';
+import { SearchIcon, CalendarIcon } from '@shopify/polaris-icons';
+import "./TextFieldWithPostfix.css";
 
 
 export default function ShowProduct({ imageUrl, productName, inventoryData }) {
@@ -43,6 +65,81 @@ export default function ShowProduct({ imageUrl, productName, inventoryData }) {
       </div>
     );
   };
+
+
+  // This example is for guidance purposes. Copying it will come with caveats.
+  function DatePickerForSync() {
+    const [visible, setVisible] = useState(false);
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [{ month, year }, setDate] = useState({
+      month: selectedDate.getMonth(),
+      year: selectedDate.getFullYear(),
+    });
+    const formattedValue = selectedDate.toISOString().slice(0, 10);
+
+    function handleOnClose({ relatedTarget }) {
+      setVisible(false);
+    }
+
+    function handleMonthChange(month, year) {
+      setDate({ month, year });
+    }
+
+    function handleDateSelection({ end: newSelectedDate }) {
+      setSelectedDate(newSelectedDate);
+      setVisible(false);
+    }
+
+    useEffect(() => {
+      if (selectedDate) {
+        setDate({
+          month: selectedDate.getMonth(),
+          year: selectedDate.getFullYear(),
+        });
+      }
+    }, [selectedDate]);
+    return (
+      <BlockStack gap="400">
+        <Box minWidth='300px'>
+          <Popover
+            active={visible}
+            autofocusTarget="none"
+            preferredAlignment="left"
+            fullWidth
+            preferInputActivator={false}
+            preferredPosition="below"
+            preventCloseOnChildOverlayClick
+            onClose={handleOnClose}
+            activator={
+              <div className='textFieldWrapper'>
+                <TextField
+                  role="combobox"
+                  label="Start Date"
+                  value={formattedValue}
+                  onFocus={() => setVisible(true)}
+                  autoComplete="off"
+                />
+                <div className='icon'>
+                  <Icon source={CalendarIcon} />
+                </div>
+              </div>
+            }
+          >
+            <Card >
+              <DatePicker
+                month={month}
+                year={year}
+                selected={selectedDate}
+                onMonthChange={handleMonthChange}
+                onChange={handleDateSelection}
+              />
+            </Card>
+          </Popover>
+        </Box>
+      </BlockStack>
+    )
+  }
+
 
   return (
     <Page
@@ -185,6 +282,43 @@ export default function ShowProduct({ imageUrl, productName, inventoryData }) {
                       </IndexTable.Row>
                     </IndexTable>
                   </Card>
+                </BlockStack>
+              </BlockStack>
+            </Card>
+          </Layout.Section>
+
+          <Layout.Section>
+            <Card gap="200">
+              <BlockStack gap="200">
+                <BlockStack inlineAlign="start">
+                  <InlineStack gap="400">
+                    <Text as="h3" variant="headingSm">
+                      Launch Date Notification
+                    </Text>
+                  </InlineStack>
+                </BlockStack>
+                <BlockStack>
+                  <p style={{ textAlign: 'left', marginTop: '16px', marginBottom: '16px' }}>
+                    Enter your updated launch date and click "Send Email Alert" and we will email all users who have pre-ordered this product.
+                  </p>
+
+
+                  <InlineStack gap="400">
+                    <DatePickerForSync />
+
+                    <p style={{ textAlign: 'left', marginTop: '20px' }}>
+                      <Button variant="primary">Sync Products</Button>
+                    </p>
+                  </InlineStack>
+
+
+                  <div style={{ marginTop: '20px' }}>
+                    <Banner tone="warning" status="info" style={{ marginTop: '20px' }}>
+                      <p style={{ textAlign: 'left' }}>
+                        <strong>NOTE:</strong> To prevent your emails being marked as spam, this action can only be done once every 72 hours.
+                      </p>
+                    </Banner>
+                  </div>
                 </BlockStack>
               </BlockStack>
             </Card>
