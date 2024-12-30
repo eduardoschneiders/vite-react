@@ -72,11 +72,11 @@ export default function ShowProduct({ imageUrl, productName, inventoryData }) {
   function DatePickerForSync() {
     const [visible, setVisible] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date());
+    const [currentDate, setCurrentDate] = useState('')
     const [{ month, year }, setDate] = useState({
       month: selectedDate.getMonth(),
       year: selectedDate.getFullYear(),
     });
-    const formattedValue = selectedDate.toISOString().slice(0, 10);
 
     function handleOnClose({ relatedTarget }) {
       setVisible(false);
@@ -88,6 +88,7 @@ export default function ShowProduct({ imageUrl, productName, inventoryData }) {
 
     function handleDateSelection({ end: newSelectedDate }) {
       setSelectedDate(newSelectedDate);
+      setCurrentDate(newSelectedDate.toISOString().slice(0, 10))
       setVisible(false);
     }
 
@@ -116,7 +117,8 @@ export default function ShowProduct({ imageUrl, productName, inventoryData }) {
                 <TextField
                   role="combobox"
                   label="Start Date"
-                  value={formattedValue}
+                  placeholder='Select new preorder launch date'
+                  value={currentDate}
                   onFocus={() => setVisible(true)}
                   autoComplete="off"
                 />
@@ -308,7 +310,7 @@ export default function ShowProduct({ imageUrl, productName, inventoryData }) {
                   <InlineStack gap="400">
                     <DatePickerForSync />
 
-                    <p style={{ textAlign: 'left', marginTop: '20px' }}>
+                    <p style={{ textAlign: 'left', marginTop: '25px' }}>
                       <Button variant="primary">Sync Products</Button>
                     </p>
                   </InlineStack>
