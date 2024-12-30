@@ -23,7 +23,7 @@ import {
 } from '@shopify/polaris';
 import { React, useState, useEffect, useRef } from 'react';
 import { SearchIcon, CalendarIcon, InfoIcon } from '@shopify/polaris-icons';
-import "./TextFieldWithPostfix.css";
+import "./ShowProduct.css";
 
 
 export default function ShowProduct({ imageUrl, productName }) {
