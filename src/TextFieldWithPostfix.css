@@ -2,6 +2,9 @@ body {
   height: auto !important;
 }
 
+.main-content .Polaris-Layout__Section:first-of-type {
+  margin-top: 0;
+}
 .textFieldWrapper {
   position: relative;
 }

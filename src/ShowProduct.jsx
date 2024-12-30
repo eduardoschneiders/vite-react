@@ -18,7 +18,8 @@ import {
   TextField,
   Popover,
   Icon,
-  Link
+  Link,
+  InlineGrid
 } from '@shopify/polaris';
 import { React, useState, useEffect, useRef } from 'react';
 import { SearchIcon, CalendarIcon, InfoIcon } from '@shopify/polaris-icons';
@@ -156,194 +157,203 @@ export default function ShowProduct({ imageUrl, productName }) {
           { content: 'Save for All Products' },
         ]}
     >
-      <Layout>
-        <Layout.Section variant="oneThird">
-          <Layout.Section>
-            <LegacyCard sectioned>
-              <BlockStack>
-                <InlineStack gap="400" blockAlign="center">
-                  <div style={{ width: '47px', height: '47px', padding: '5px', background: '#f9f9f7', border: 'solid 1px #e5e5e4', borderRadius: '8px' }}>
-                    <img src={imageUrl} width={35} height={35} />
-                  </div>
+      <BlockStack gap="500">
+        <BlockStack gap="500">
+          <Layout>
+            <Layout.Section>
+              <InlineGrid columns={['oneThird', 'twoThirds']}>
+                <div>
+                  <Card>
+                    <BlockStack>
+                      <InlineStack gap="400" blockAlign="center">
+                        <div style={{ width: '47px', height: '47px', padding: '5px', background: '#f9f9f7', border: 'solid 1px #e5e5e4', borderRadius: '8px' }}>
+                          <img src={imageUrl} width={35} height={35} />
+                        </div>
 
-                  <Text
-                    as="h2"
-                    variant="bodyMd"
-                    fontWeight="medium"
-                  >
-                    {productName}
-                  </Text>
-                </InlineStack>
-              </BlockStack>
-            </LegacyCard>
-          </Layout.Section>
-        </Layout.Section>
-
-        <Layout.Section>
-          <Layout.Section>
-            <Card gap="400">
-              <BlockStack gap="200">
-                <BlockStack inlineAlign="start">
-                  <InlineStack gap="400">
-                    <Text as="h3" variant="headingSm">
-                      Status
-                    </Text>
-                  </InlineStack>
-                </BlockStack>
-                <BlockStack>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                    <p>
-                      Preorder status is <strong>disabled</strong>
-                    </p>
-
-                    <Button variant="primary" tone="success">Enable</Button>
-                  </div>
-
-                  <Banner status="info">
-                    <p style={{ textAlign: 'left' }}>
-                      This product is currently not available for preorder. To enable preorder, click the button on the right.
-                    </p>
-                  </Banner>
-                </BlockStack>
-              </BlockStack>
-            </Card>
-          </Layout.Section>
-
-          <Layout.Section>
-            <Card roundedAbove="sm">
-              <Bleed marginInline="400" marginBlock="400">
-                <Banner tone="info">
-                  <strong>Product Settings</strong>
-                </Banner>
-
-                <Box padding="400">
-                  <p style={{ textAlign: 'left' }}>
-                    Default settings are automatically enabled. To choose custom settings (such as Button Text and Badge details), please check the box below.
-                  </p>
-
-                  <p style={{ textAlign: 'left', marginTop: '16px' }}>
-                    <Checkbox label="Enable Custom Settings" />
-                  </p>
-                </Box>
-              </Bleed>
-            </Card>
-          </Layout.Section>
-
-          <Layout.Section>
-            <Card gap="200">
-              <BlockStack gap="200">
-                <BlockStack inlineAlign="start">
-                  <InlineStack gap="400">
-                    <Text as="h3" variant="headingSm">
-                      Product Inventory
-                    </Text>
-                  </InlineStack>
-                </BlockStack>
-                <BlockStack>
-
-                  <p style={{ textAlign: 'left', marginTop: '16px' }}>
-                    If the product inventory/details are incorrect, click <strong>"Sync Products"</strong> below.
-                  </p>
-
-                  <p style={{ textAlign: 'left', marginTop: '16px', marginBottom: '16px' }}>
-                    <Button>Sync Products</Button>
-                  </p>
-
-                  <Card padding={0}>
-                    <IndexTable
-                      resourceName={{ singular: 'product', plural: 'products' }}
-                      itemCount={2}
-                      headings={[
-                        { title: 'Product Location' },
-                        { title: 'Inventory Tracking' },
-                        { title: 'Inventory Quantity' },
-                        { title: 'Oversell Status' },
-                      ]}
-                      selectable={false}
-                    >
-                      <IndexTable.Row id={1} key={1} position={1}>
-                        <IndexTable.Cell>
-                          <p style={{ paddingTop: '8px', paddingBottom: '8px' }}>
-                            Pre-order Now App
-                          </p>
-                        </IndexTable.Cell>
-                        <IndexTable.Cell><Badge tone="success">Enabled</Badge></IndexTable.Cell>
-                        <IndexTable.Cell>50</IndexTable.Cell>
-                        <IndexTable.Cell><Badge tone="success">Enabled</Badge></IndexTable.Cell>
-                      </IndexTable.Row>
-
-                      <IndexTable.Row id={2} key={2} position={2}>
-                        <IndexTable.Cell>
-                          <p style={{ paddingTop: '8px', paddingBottom: '8px' }}>
-                            Shopify
-                          </p>
-                        </IndexTable.Cell>
-                        <IndexTable.Cell><Badge tone="success">Enabled</Badge></IndexTable.Cell>
-                        <IndexTable.Cell>50</IndexTable.Cell>
-                        <IndexTable.Cell><Badge tone="success">Enabled</Badge></IndexTable.Cell>
-                      </IndexTable.Row>
-                    </IndexTable>
+                        <Text
+                          as="h2"
+                          variant="bodyMd"
+                          fontWeight="medium"
+                        >
+                          {productName}
+                        </Text>
+                      </InlineStack>
+                    </BlockStack>
                   </Card>
-                </BlockStack>
-              </BlockStack>
-            </Card>
-          </Layout.Section>
+                </div>
 
-          <Layout.Section>
-            <Card gap="200">
-              <BlockStack gap="200">
-                <BlockStack inlineAlign="start">
-                  <InlineStack gap="400">
-                    <Text as="h3" variant="headingSm">
-                      Launch Date Notification
-                    </Text>
-                  </InlineStack>
-                </BlockStack>
-                <BlockStack>
-                  <p style={{ textAlign: 'left', marginTop: '16px', marginBottom: '16px' }}>
-                    Enter your updated launch date and click "Send Email Alert" and we will email all users who have pre-ordered this product.
-                  </p>
+                <div class="main-content">
+                  <Layout.Section>
+                    <Card gap="400">
+                      <BlockStack gap="200">
+                        <BlockStack inlineAlign="start">
+                          <InlineStack gap="400">
+                            <Text as="h3" variant="headingSm">
+                              Status
+                            </Text>
+                          </InlineStack>
+                        </BlockStack>
+                        <BlockStack>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                            <p>
+                              Preorder status is <strong>disabled</strong>
+                            </p>
+
+                            <Button variant="primary" tone="success">Enable</Button>
+                          </div>
+
+                          <Banner status="info">
+                            <p style={{ textAlign: 'left' }}>
+                              This product is currently not available for preorder. To enable preorder, click the button on the right.
+                            </p>
+                          </Banner>
+                        </BlockStack>
+                      </BlockStack>
+                    </Card>
+                  </Layout.Section>
+                  <Layout.Section>
+                    <Card roundedAbove="sm">
+                      <Bleed marginInline="400" marginBlock="400">
+                        <Banner tone="info">
+                          <strong>Product Settings</strong>
+                        </Banner>
+
+                        <Box padding="400">
+                          <p style={{ textAlign: 'left' }}>
+                            Default settings are automatically enabled. To choose custom settings (such as Button Text and Badge details), please check the box below.
+                          </p>
+
+                          <p style={{ textAlign: 'left', marginTop: '16px' }}>
+                            <Checkbox label="Enable Custom Settings" />
+                          </p>
+                        </Box>
+                      </Bleed>
+                    </Card>
+                  </Layout.Section>
+
+                  <Layout.Section>
+                    <Card gap="200">
+                      <BlockStack gap="200">
+                        <BlockStack inlineAlign="start">
+                          <InlineStack gap="400">
+                            <Text as="h3" variant="headingSm">
+                              Product Inventory
+                            </Text>
+                          </InlineStack>
+                        </BlockStack>
+                        <BlockStack>
+
+                          <p style={{ textAlign: 'left', marginTop: '16px' }}>
+                            If the product inventory/details are incorrect, click <strong>"Sync Products"</strong> below.
+                          </p>
+
+                          <p style={{ textAlign: 'left', marginTop: '16px', marginBottom: '16px' }}>
+                            <Button>Sync Products</Button>
+                          </p>
+
+                          <Card padding={0}>
+                            <IndexTable
+                              resourceName={{ singular: 'product', plural: 'products' }}
+                              itemCount={2}
+                              headings={[
+                                { title: 'Product Location' },
+                                { title: 'Inventory Tracking' },
+                                { title: 'Inventory Quantity' },
+                                { title: 'Oversell Status' },
+                              ]}
+                              selectable={false}
+                            >
+                              <IndexTable.Row id={1} key={1} position={1}>
+                                <IndexTable.Cell>
+                                  <p style={{ paddingTop: '8px', paddingBottom: '8px' }}>
+                                    Pre-order Now App
+                                  </p>
+                                </IndexTable.Cell>
+                                <IndexTable.Cell><Badge tone="success">Enabled</Badge></IndexTable.Cell>
+                                <IndexTable.Cell>50</IndexTable.Cell>
+                                <IndexTable.Cell><Badge tone="success">Enabled</Badge></IndexTable.Cell>
+                              </IndexTable.Row>
+
+                              <IndexTable.Row id={2} key={2} position={2}>
+                                <IndexTable.Cell>
+                                  <p style={{ paddingTop: '8px', paddingBottom: '8px' }}>
+                                    Shopify
+                                  </p>
+                                </IndexTable.Cell>
+                                <IndexTable.Cell><Badge tone="success">Enabled</Badge></IndexTable.Cell>
+                                <IndexTable.Cell>50</IndexTable.Cell>
+                                <IndexTable.Cell><Badge tone="success">Enabled</Badge></IndexTable.Cell>
+                              </IndexTable.Row>
+                            </IndexTable>
+                          </Card>
+                        </BlockStack>
+                      </BlockStack>
+                    </Card>
+                  </Layout.Section>
+
+                  <Layout.Section>
+                    <Card gap="200">
+                      <BlockStack gap="200">
+                        <BlockStack inlineAlign="start">
+                          <InlineStack gap="400">
+                            <Text as="h3" variant="headingSm">
+                              Launch Date Notification
+                            </Text>
+                          </InlineStack>
+                        </BlockStack>
+                        <BlockStack>
+                          <p style={{ textAlign: 'left', marginTop: '16px', marginBottom: '16px' }}>
+                            Enter your updated launch date and click "Send Email Alert" and we will email all users who have pre-ordered this product.
+                          </p>
 
 
-                  <InlineStack gap="400">
-                    <DatePickerForSync />
+                          <InlineStack gap="400">
+                            <DatePickerForSync />
 
-                    <p style={{ textAlign: 'left', marginTop: '25px' }}>
-                      <Button variant="primary">Sync Products</Button>
-                    </p>
-                  </InlineStack>
+                            <p style={{ textAlign: 'left', marginTop: '25px' }}>
+                              <Button variant="primary">Sync Products</Button>
+                            </p>
+                          </InlineStack>
 
-                  <div style={{ marginTop: '20px' }}>
-                    <Banner tone="warning" status="info" style={{ marginTop: '20px' }}>
-                      <p style={{ textAlign: 'left' }}>
-                        <strong>NOTE:</strong> To prevent your emails being marked as spam, this action can only be done once every 72 hours.
-                      </p>
-                    </Banner>
-                  </div>
-                </BlockStack>
-              </BlockStack>
-            </Card>
-          </Layout.Section>
-          <Layout.Section>
-            <div
-              style={{
-                marginTop: "20px",
-                marginBottom: "20px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <Button variant="primary" tone="critical" destructive>Delete Product</Button>
+                          <div style={{ marginTop: '20px' }}>
+                            <Banner tone="warning" status="info" style={{ marginTop: '20px' }}>
+                              <p style={{ textAlign: 'left' }}>
+                                <strong>NOTE:</strong> To prevent your emails being marked as spam, this action can only be done once every 72 hours.
+                              </p>
+                            </Banner>
+                          </div>
+                        </BlockStack>
+                      </BlockStack>
+                    </Card>
+                  </Layout.Section>
 
-              <div style={{ display: "flex", gap: "8px" }}>
-                <Button>Save for all Products</Button>
-                <Button variant="primary">Save</Button>
-              </div>
-            </div>
-          </Layout.Section>
-        </Layout.Section>
+                  <Layout.Section>
+                    <div
+                      style={{
+                        marginTop: "20px",
+                        marginBottom: "20px",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Button variant="primary" tone="critical" destructive>Delete Product</Button>
 
+                      <div style={{ display: "flex", gap: "8px" }}>
+                        <Button>Save for all Products</Button>
+                        <Button variant="primary">Save</Button>
+                      </div>
+                    </div>
+                  </Layout.Section>
+
+                </div>
+              </InlineGrid>
+            </Layout.Section>
+          </Layout>
+        </BlockStack>
+      </BlockStack>
+
+      <Layout>
         <Layout.Section>
           <div
             style={{
