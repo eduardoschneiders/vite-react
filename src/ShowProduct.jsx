@@ -25,7 +25,7 @@ import { SearchIcon, CalendarIcon, InfoIcon } from '@shopify/polaris-icons';
 import "./TextFieldWithPostfix.css";
 
 
-export default function ShowProduct({ imageUrl, productName, inventoryData }) {
+export default function ShowProduct({ imageUrl, productName }) {
   const Placeholder = ({
     label = '',
     height = 'auto',
@@ -67,9 +67,7 @@ export default function ShowProduct({ imageUrl, productName, inventoryData }) {
     );
   };
 
-
-  // This example is for guidance purposes. Copying it will come with caveats.
-  function DatePickerForSync() {
+  const DatePickerForSync = () => {
     const [visible, setVisible] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [currentDate, setCurrentDate] = useState('')
